@@ -1,0 +1,15 @@
+D:\repos\kpi_repos\OOP\LAB2\LAB2_OOP\GameAccount\GameAccount\bin\Debug\net6.0\GameAccount.exe
+D:\repos\kpi_repos\OOP\LAB2\LAB2_OOP\GameAccount\GameAccount\bin\Debug\net6.0\GameAccount.deps.json
+D:\repos\kpi_repos\OOP\LAB2\LAB2_OOP\GameAccount\GameAccount\bin\Debug\net6.0\GameAccount.runtimeconfig.json
+D:\repos\kpi_repos\OOP\LAB2\LAB2_OOP\GameAccount\GameAccount\bin\Debug\net6.0\GameAccount.dll
+D:\repos\kpi_repos\OOP\LAB2\LAB2_OOP\GameAccount\GameAccount\bin\Debug\net6.0\GameAccount.pdb
+D:\repos\kpi_repos\OOP\LAB2\LAB2_OOP\GameAccount\GameAccount\obj\Debug\net6.0\GameAccount.csproj.AssemblyReference.cache
+D:\repos\kpi_repos\OOP\LAB2\LAB2_OOP\GameAccount\GameAccount\obj\Debug\net6.0\GameAccount.GeneratedMSBuildEditorConfig.editorconfig
+D:\repos\kpi_repos\OOP\LAB2\LAB2_OOP\GameAccount\GameAccount\obj\Debug\net6.0\GameAccount.AssemblyInfoInputs.cache
+D:\repos\kpi_repos\OOP\LAB2\LAB2_OOP\GameAccount\GameAccount\obj\Debug\net6.0\GameAccount.AssemblyInfo.cs
+D:\repos\kpi_repos\OOP\LAB2\LAB2_OOP\GameAccount\GameAccount\obj\Debug\net6.0\GameAccount.csproj.CoreCompileInputs.cache
+D:\repos\kpi_repos\OOP\LAB2\LAB2_OOP\GameAccount\GameAccount\obj\Debug\net6.0\GameAccount.dll
+D:\repos\kpi_repos\OOP\LAB2\LAB2_OOP\GameAccount\GameAccount\obj\Debug\net6.0\refint\GameAccount.dll
+D:\repos\kpi_repos\OOP\LAB2\LAB2_OOP\GameAccount\GameAccount\obj\Debug\net6.0\GameAccount.pdb
+D:\repos\kpi_repos\OOP\LAB2\LAB2_OOP\GameAccount\GameAccount\obj\Debug\net6.0\GameAccount.genruntimeconfig.cache
+D:\repos\kpi_repos\OOP\LAB2\LAB2_OOP\GameAccount\GameAccount\obj\Debug\net6.0\ref\GameAccount.dll
