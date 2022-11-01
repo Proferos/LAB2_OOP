@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace GameAccount
 {
+    public abstract class BaseAccount{
+        
+    }
     public class GameAccount
     {
         public string UserName;
@@ -61,7 +64,6 @@ namespace GameAccount
         public static void GetStats(string user)
         {
             GameAccount us = FindByName(user);
-            int y;
             Console.WriteLine("\nUsername: {0}; Rating: {1}, Games count: {2}", us.UserName, us.CurrentRating, us.GamesCount);
 
 
