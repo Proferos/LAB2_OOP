@@ -128,7 +128,8 @@ namespace GameAccount
         public override void LoseGame(string opponentName, int Rating)
         {
             GamesCount++;
-            CurrentRating -= Rating / 2;
+            Rating /= 2;
+            CurrentRating -= Rating;
             if (CurrentRating <= 0)
             {
                 CurrentRating = 1;
@@ -166,6 +167,42 @@ namespace GameAccount
         {
             GamesCount++;
             CurrentRating -= 0;
+            if (CurrentRating <= 0)
+            {
+                CurrentRating = 1;
+            }
+        }
+    }
+
+    public class Account : GameAccount
+    {
+
+        public Account(string UserName)
+        {
+            this.UserName = UserName;
+            CurrentRating = 1000;
+            GamesCount = 0;
+        }
+
+        public static GameAccount Create(string UserName)
+        {
+            Account account = new Account(UserName);
+            AccountList.Add(account);
+            return account;
+        }
+
+        public override void WinGame(string opponentName, int Rating)
+        {
+            GamesCount++;
+            CurrentRating += Rating;
+            Console.WriteLine("\n{0} just won {1} rating from {2}\n", UserName, Rating, FindByName(opponentName).UserName);
+        }
+
+
+        public override void LoseGame(string opponentName, int Rating)
+        {
+            GamesCount++;
+            CurrentRating -= Rating;
             if (CurrentRating <= 0)
             {
                 CurrentRating = 1;
