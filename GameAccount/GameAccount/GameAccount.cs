@@ -1,24 +1,48 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace GameAccount
 {
-    public abstract class BaseAccount{
-        
+    public class Account{
+        static int idGenerator = 1000;
+        public int id = ++idGenerator;
+        private string name;
+        private int rating;
+        private int gamesCount;
+
+        public string Name
+        {
+            get { return name; }
+            set { name = value; }
+        }
+
+        public int Rating
+        {
+            get { return rating; }
+            set { rating = value; }
+        }
+
+        public int GamesCount
+        {
+            get { return rating; }
+            set { rating = value; }
+        }
+
     }
+
+
     public class GameAccount
     {
         public string UserName;
         int CurrentRating;
         int GamesCount;
-        public List<Game> gamesHistory = new List<Game>();
 
+        public List<Game> gamesHistory = new List<Game>();
         public static List<GameAccount> AccountList = new List<GameAccount>();
-        //public List<String> History = new List<GameAccount>();
-        //public static List<GameAccount> AccountList = new List<GameAccount>();
 
 
         public GameAccount(string UserName)

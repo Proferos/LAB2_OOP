@@ -6,24 +6,19 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace GameAccount
-
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            GameAccount.Create("nagibator228");
-            GameAccount.Create("ubivator337");
-
-            Game.Play("nagibator228", "ubivator337", 30);
-            Game.Play("nagibator228", "ubivator337", 30);
-            Game.Play("nagibator228", "ubivator337", 30);
-            Game.Play("nagibator228", "ubivator337", 30);
-            Game.Play("nagibator228", "ubivator337", 1000);
-            Game.Play("nagibator228", "ubivator337", 0);
-            Game.Play("nagibator228", "ubivator337", -30);
-            GameAccount.GetStats("nagibator228");
-            GameAccount.GetStats("ubivator337");
+            Account account = new Account();
+            Account account2 = new Account();
+            Account account3 = new Account();
+            account.Name = "Name";
+            account.Name = "Yo";
+            Console.WriteLine(account.id);
+            Console.WriteLine(account2.id);
+            Console.WriteLine(account3.id);
 
 
         }
