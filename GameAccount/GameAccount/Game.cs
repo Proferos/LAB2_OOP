@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GameAccount
 {
-    public class Game
+    public abstract class Game
     {
         public static List<int> GameList = new List<int>() { 1 };
 
@@ -16,58 +16,7 @@ namespace GameAccount
         public int Rating;
         public int Number;
 
-        public Game(GameAccount player1, GameAccount player2, int Rating)
-        {
-            if (Rating < 0)
-            {
-                throw new ArgumentOutOfRangeException(nameof(Rating), "Rating bet must be 0 or higher");
-            }
-            this.player1 = player1;
-            this.player2 = player2;
-            this.Rating = Rating;
-            Number = UniqueRandom();
-
-
-        }
-
-
-        public static void PlayCoinFlip(string user1, string user2, int Rating)
-        {
-
-            GameAccount player1 = GameAccount.FindByName(user1);
-            GameAccount player2 = GameAccount.FindByName(user2);
-
-            try
-            {
-                Game game = new Game(player1, player2, Rating);
-
-                Random rnd = new Random();
-                int coinFlip = rnd.Next(0, 2);
-                switch (coinFlip)
-                {
-                    case 0:
-                        game.winner = player1;
-                        player1.WinGame(player2.UserName, Rating);
-                        player2.LoseGame(player1.UserName, Rating);
-                        break;
-                    case 1:
-                        game.winner = player2;
-                        player2.WinGame(player1.UserName, Rating);
-                        player1.LoseGame(player2.UserName, Rating);
-                        break;
-                }
-                player1.gamesHistory.Add(game);
-                player2.gamesHistory.Add(game);
-
-            }
-            catch (ArgumentOutOfRangeException e)
-            {
-                Console.WriteLine("Exception caught you tried to bet negative rating");
-                Console.WriteLine(e.ToString());
-                return;
-            }
-
-        }
+        public abstract void Play(string user1, string user2, int Rating);
 
 
         private static void filler()
@@ -121,5 +70,58 @@ namespace GameAccount
         }
 
         private System.Random _rng;
+    }
+
+    public class CoinFlip : Game {
+            public CoinFlip(GameAccount player1, GameAccount player2, int Rating)
+            {
+                if (Rating < 0)
+                {
+                    throw new ArgumentOutOfRangeException(nameof(Rating), "Rating bet must be 0 or higher");
+                }
+                this.player1 = player1;
+                this.player2 = player2;
+                this.Rating = Rating;
+            Number = UniqueRandom();
+            }
+
+        public override void Play(string user1, string user2, int Rating)
+        {
+
+            GameAccount player1 = GameAccount.FindByName(user1);
+            GameAccount player2 = GameAccount.FindByName(user2);
+
+            try
+            {
+                CoinFlip game = new CoinFlip(player1, player2, Rating);
+
+                Random rnd = new Random();
+                int coinFlip = rnd.Next(0, 2);
+                switch (coinFlip)
+                {
+                    case 0:
+                        game.winner = player1;
+                        player1.WinGame(player2.UserName, Rating);
+                        player2.LoseGame(player1.UserName, Rating);
+                        break;
+                    case 1:
+                        game.winner = player2;
+                        player2.WinGame(player1.UserName, Rating);
+                        player1.LoseGame(player2.UserName, Rating);
+                        break;
+                }
+                player1.gamesHistory.Add(game);
+                player2.gamesHistory.Add(game);
+
+            }
+            catch (ArgumentOutOfRangeException e)
+            {
+                Console.WriteLine("Exception caught you tried to bet negative rating");
+                Console.WriteLine(e.ToString());
+                return;
+            }
+
+        }
+
     }
 }
