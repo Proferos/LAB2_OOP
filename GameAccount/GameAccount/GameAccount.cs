@@ -9,6 +9,7 @@ namespace GameAccount
     
     public abstract class GameAccount
     {
+        public int AccType = 0; // 0 - default user, 1 - premium user, 2 - admin
         public string UserName;
         protected int CurrentRating;
         protected int GamesCount;
@@ -17,14 +18,10 @@ namespace GameAccount
         public static List<GameAccount> AccountList = new List<GameAccount>();
 
 
-
         public void addToList(GameAccount account)
         {
             AccountList.Add(account);
         }
-
-
-        
 
         public virtual void WinGame(string opponentName, int Rating)
         {
@@ -79,7 +76,6 @@ namespace GameAccount
                 rating = game.Rating;
                 Console.WriteLine("\nStats for player {0}", user);
                 Console.WriteLine("Game {0}: against {1} {2} {3} rating\n", a, enemy, result, rating);
-                Thread.Sleep(100);
             }
 
 
@@ -101,12 +97,12 @@ namespace GameAccount
 
     public class PremiumAccount : GameAccount
     {
-
         public PremiumAccount(string UserName)
         {
             this.UserName = UserName;
             CurrentRating = 1000;
             GamesCount = 0;
+            AccType = 1;
         }
 
         public static GameAccount Create(string UserName)
@@ -145,6 +141,7 @@ namespace GameAccount
             this.UserName = UserName;
             CurrentRating = 1000;
             GamesCount = 0;
+            AccType = 2;
         }
 
         public static GameAccount Create(string UserName)
@@ -182,6 +179,7 @@ namespace GameAccount
             this.UserName = UserName;
             CurrentRating = 1000;
             GamesCount = 0;
+            AccType = 0;
         }
 
         public static GameAccount Create(string UserName)

@@ -31,7 +31,7 @@ namespace GameAccount
         }
 
 
-        public static void Play(string user1, string user2, int Rating)
+        public static void PlayCoinFlip(string user1, string user2, int Rating)
         {
 
             GameAccount player1 = GameAccount.FindByName(user1);

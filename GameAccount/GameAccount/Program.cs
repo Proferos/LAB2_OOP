@@ -14,10 +14,11 @@ namespace GameAccount
         {
             PremiumAccount.Create("prem");
             AdminAccount.Create("admin");
+            Account.Create("user");
 
-            Game.Play("prem", "admin", 30);
-            Game.Play("prem", "admin", 700);
-            Game.Play("prem", "admin", 300);
+            Game.PlayCoinFlip("prem", "admin", 30);
+            Game.PlayCoinFlip("prem", "admin", 700);
+            Game.PlayCoinFlip("prem", "admin", 300);
 
             GameAccount.GetStats("prem");
             GameAccount.GetStats("admin");
