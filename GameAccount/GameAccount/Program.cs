@@ -12,18 +12,15 @@ namespace GameAccount
     {
         static void Main(string[] args)
         {
-            GameAccount.Create("nagibator228");
-            GameAccount.Create("ubivator337");
+            PremiumAccount.Create("prem");
+            AdminAccount.Create("admin");
 
-            Game.Play("nagibator228", "ubivator337", 30);
-            Game.Play("nagibator228", "ubivator337", 30);
-            Game.Play("nagibator228", "ubivator337", 30);
-            Game.Play("nagibator228", "ubivator337", 30);
-            Game.Play("nagibator228", "ubivator337", 1000);
-            Game.Play("nagibator228", "ubivator337", 0);
-            Game.Play("nagibator228", "ubivator337", -30);
-            GameAccount.GetStats("nagibator228");
-            GameAccount.GetStats("ubivator337");
+            Game.Play("prem", "admin", 30);
+            Game.Play("prem", "admin", 700);
+            Game.Play("prem", "admin", 300);
+
+            GameAccount.GetStats("prem");
+            GameAccount.GetStats("admin");
 
 
         }
