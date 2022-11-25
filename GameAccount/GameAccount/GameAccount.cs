@@ -23,16 +23,18 @@ namespace GameAccount
             AccountList.Add(account);
         }
 
-        public virtual void WinGame(string opponentName, int Rating)
+        public virtual void WinGame(string opponentName, Game game)
         {
+            int Rating = game.Rating;
             GamesCount++;
             CurrentRating += Rating;
             Console.WriteLine("\n{0} just won {1} rating from {2}\n", UserName, Rating, FindByName(opponentName).UserName);
         }
 
 
-        public virtual void LoseGame(string opponentName, int Rating)
+        public virtual void LoseGame(string opponentName, Game game)
         {
+            int Rating = game.Rating;
             GamesCount++;
             CurrentRating -= Rating;
             if (CurrentRating <= 0)
@@ -41,6 +43,11 @@ namespace GameAccount
             }
         }
 
+        public void announcement(string opponentName)
+        {
+            GamesCount++;
+            Console.WriteLine("\n{0} just won {1}\n", UserName, FindByName(opponentName).UserName);
+        }
 
         public static void GetStats(string user)
         {
@@ -112,8 +119,9 @@ namespace GameAccount
             return account;
         }
 
-        public override void WinGame(string opponentName, int Rating)
+        public override void WinGame(string opponentName, Game game)
         {
+            int Rating = game.Rating;
             GamesCount++;
             Rating *= 2;
             CurrentRating += Rating;
@@ -121,8 +129,9 @@ namespace GameAccount
         }
 
 
-        public override void LoseGame(string opponentName, int Rating)
+        public override void LoseGame(string opponentName, Game game)
         {
+            int Rating = game.Rating;
             GamesCount++;
             Rating /= 2;
             CurrentRating -= Rating;
@@ -151,8 +160,9 @@ namespace GameAccount
             return account;
         }
 
-        public override void WinGame(string opponentName, int Rating)
+        public override void WinGame(string opponentName, Game game)
         {
+            int Rating = game.Rating;
             GamesCount++;
             Rating *= 2;
             CurrentRating += Rating;
@@ -160,8 +170,9 @@ namespace GameAccount
         }
 
 
-        public override void LoseGame(string opponentName, int Rating)
+        public override void LoseGame(string opponentName, Game game)
         {
+            int Rating = game.Rating;
             GamesCount++;
             CurrentRating -= 0;
             if (CurrentRating <= 0)
@@ -189,16 +200,18 @@ namespace GameAccount
             return account;
         }
 
-        public override void WinGame(string opponentName, int Rating)
+        public override void WinGame(string opponentName, Game game)
         {
+            int Rating = game.Rating;
             GamesCount++;
             CurrentRating += Rating;
             Console.WriteLine("\n{0} just won {1} rating from {2}\n", UserName, Rating, FindByName(opponentName).UserName);
         }
 
 
-        public override void LoseGame(string opponentName, int Rating)
+        public override void LoseGame(string opponentName, Game game)
         {
+            int Rating = game.Rating;
             GamesCount++;
             CurrentRating -= Rating;
             if (CurrentRating <= 0)

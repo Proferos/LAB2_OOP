@@ -12,16 +12,33 @@ namespace GameAccount
     {
         static void Main(string[] args)
         {
-            PremiumAccount.Create("prem");
-            AdminAccount.Create("admin");
-            Account.Create("user");
+            GameAccount prem = PremiumAccount.Create("prem");
+            GameAccount admin = AdminAccount.Create("admin");
+            GameAccount user = Account.Create("user");
+            GameAccount user2 = Account.Create("user2");
 
-            Game.Play("prem", "admin", 30);
-            Game.Play("prem", "admin", 700);
-            Game.Play("prem", "admin", 300);
+
+            Training game1 = new Training(user, admin);
+            game1.Play();
+
+
+            CoinFlipSolo game2 = new CoinFlipSolo(user, user2, 50);
+            game2.Play();
+            CoinFlipSolo game3 = new CoinFlipSolo(user, user2, 70);
+            game3.Play();
+            CoinFlipSolo game4 = new CoinFlipSolo(user, user2, 900);
+            game4.Play();
+
+            CoinFlip game5 = new CoinFlip(prem, admin, 2);
+            game5.Play();
+            CoinFlip game6 = new CoinFlip(prem, admin, 70);
+            game6.Play();
+
 
             GameAccount.GetStats("prem");
             GameAccount.GetStats("admin");
+            GameAccount.GetStats("user");
+            GameAccount.GetStats("user2");
 
 
         }

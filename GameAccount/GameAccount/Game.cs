@@ -16,7 +16,7 @@ namespace GameAccount
         public int Rating;
         public int Number;
 
-        public abstract void Play(string user1, string user2, int Rating);
+        public virtual void Play(){ }
 
 
         private static void filler()
@@ -85,12 +85,8 @@ namespace GameAccount
             Number = UniqueRandom();
             }
 
-        public override void Play(string user1, string user2, int Rating)
+        public override void Play()
         {
-
-            GameAccount player1 = GameAccount.FindByName(user1);
-            GameAccount player2 = GameAccount.FindByName(user2);
-
             try
             {
                 CoinFlip game = new CoinFlip(player1, player2, Rating);
@@ -101,13 +97,110 @@ namespace GameAccount
                 {
                     case 0:
                         game.winner = player1;
-                        player1.WinGame(player2.UserName, Rating);
-                        player2.LoseGame(player1.UserName, Rating);
+                        player1.WinGame(player2.UserName, game);
+                        player2.LoseGame(player1.UserName, game);
                         break;
                     case 1:
                         game.winner = player2;
-                        player2.WinGame(player1.UserName, Rating);
-                        player1.LoseGame(player2.UserName, Rating);
+                        player2.WinGame(player1.UserName, game);
+                        player1.LoseGame(player2.UserName, game);
+                        break;
+                }
+                player1.gamesHistory.Add(game);
+                player2.gamesHistory.Add(game);
+
+            }
+            catch (ArgumentOutOfRangeException e)
+            {
+                Console.WriteLine("Exception caught you tried to bet negative rating");
+                Console.WriteLine(e.ToString());
+                return;
+            }
+
+        }
+
+    }
+
+    public class Training : Game
+    {
+        public Training(GameAccount player1, GameAccount player2)
+        {
+
+            this.player1 = player1;
+            this.player2 = player2;
+            Rating = 0;
+            Number = UniqueRandom();
+        }
+
+        public override void Play()
+        {
+            try
+            {
+                CoinFlip game = new CoinFlip(player1, player2, Rating);
+
+                Random rnd = new Random();
+                int coinFlip = rnd.Next(0, 2);
+                switch (coinFlip)
+                {
+                    case 0:
+                        game.winner = player1;
+                        player1.WinGame(player2.UserName, game);
+                        player2.LoseGame(player1.UserName, game);
+                        break;
+                    case 1:
+                        game.winner = player2;
+                        player2.WinGame(player1.UserName, game);
+                        player1.LoseGame(player2.UserName, game);
+                        break;
+                }
+                player1.gamesHistory.Add(game);
+                player2.gamesHistory.Add(game);
+
+            }
+            catch (ArgumentOutOfRangeException e)
+            {
+                Console.WriteLine("Exception caught you tried to bet negative rating");
+                Console.WriteLine(e.ToString());
+                return;
+            }
+
+        }
+
+    }
+
+    public class CoinFlipSolo : Game
+    {
+        //Game where only player1 player can lose or win rating
+        public CoinFlipSolo(GameAccount player1, GameAccount player2, int Rating)
+        {
+            if (Rating < 0)
+            {
+                throw new ArgumentOutOfRangeException(nameof(Rating), "Rating bet must be 0 or higher");
+            }
+            this.player1 = player1;
+            this.player2 = player2;
+            this.Rating = Rating;
+            Number = UniqueRandom();
+        }
+
+        public override void Play()
+        {
+            try
+            {
+                CoinFlipSolo game = new CoinFlipSolo(player1, player2, Rating);
+
+                Random rnd = new Random();
+                int coinFlip = rnd.Next(0, 2);
+                switch (coinFlip)
+                {
+                    case 0:
+                        game.winner = player1;
+                        player1.WinGame(player2.UserName, game);
+                        break;
+                    case 1:
+                        game.winner = player2;
+                        player2.announcement(player1.UserName);
+                        player1.LoseGame(player2.UserName, game);
                         break;
                 }
                 player1.gamesHistory.Add(game);
